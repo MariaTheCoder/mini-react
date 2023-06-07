@@ -65,14 +65,14 @@ function createGridItem(id, textAreaContent, inEditMode) {
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
     saveIcon.addEventListener("click", () => {
-      saveEditToBackend(textOutputElement, saveIcon, "element_id");
+      saveEditToBackend(textOutputElement, saveIcon, "data-element_id");
 
       render();
     });
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, delete it from the data array and call the render function */
     deleteIcon.addEventListener("click", () => {
-      deleteOneElementFromBackend("element_id", editIcon, data);
+      deleteOneElementFromBackend("data-element_id", editIcon, data);
 
       render();
     });
@@ -85,14 +85,14 @@ function createGridItem(id, textAreaContent, inEditMode) {
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
     editIcon.addEventListener("click", () => {
-      toggleEditMode(editIcon, "element_id", data);
+      toggleEditMode(editIcon, "data-element_id", data);
 
       render();
     });
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, delete it from the data array and call the render function */
     deleteIcon.addEventListener("click", () => {
-      deleteOneElementFromBackend("element_id", editIcon, data);
+      deleteOneElementFromBackend("data-element_id", editIcon, data);
 
       render();
     });
@@ -137,7 +137,7 @@ function createHTMLElement(tag, value, id) {
     HTMLElement.innerText = value;
   }
 
-  HTMLElement.setAttribute("element_id", id);
+  HTMLElement.setAttribute("data-element_id", id);
 
   return HTMLElement;
 }
