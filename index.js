@@ -1,7 +1,11 @@
+import { test } from "./test.js";
+
 const textArea = document.getElementById("text_area");
 const saveBtn = document.getElementById("save_btn");
 const outputContainer = document.getElementById("output_container");
 const deleteAllBtn = document.getElementById("delete_all_btn");
+
+test();
 
 /* data */
 let data = [
