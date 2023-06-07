@@ -17,6 +17,13 @@ html {
     padding: 1rem 0;
 }
 
+.button-textarea-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+}
+
 .output-container {
     display: grid;
     grid-template-columns: calc(80vw - calc(2 * var(--default-margin))) repeat(2, auto);
