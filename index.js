@@ -64,16 +64,7 @@ function createGridItem(id, textAreaContent, inEditMode) {
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
     saveIcon.addEventListener("click", () => {
-      /* Get the current value of input field */
-      const currentInput = textOutputElement.value;
-
-      /* Find the data object with the same id as this icon and replace the value of property 'text' */
-      const elementId = Number(saveIcon.getAttribute("element_id"));
-      const found = data.find((e) => e?.id === elementId);
-      found.text = currentInput;
-
-      /* Remember to switch the value of inEditMode back before re-rendering */
-      found.inEditMode = !found?.inEditMode;
+      saveEditToBackend(textOutputElement, saveIcon, "element_id");
 
       render();
     });
@@ -110,6 +101,19 @@ function createGridItem(id, textAreaContent, inEditMode) {
 
     outputContainer.append(textOutputElement, editIcon, deleteIcon);
   }
+}
+
+function saveEditToBackend(textElement, icon, id_attribute_name) {
+  /* Get the current value of input field */
+  const currentInput = textElement.value;
+
+  /* Find the data object with the same id as this icon and replace the value of property 'text' */
+  const elementId = Number(icon.getAttribute(id_attribute_name));
+  const found = data.find((e) => e?.id === elementId);
+  found.text = currentInput;
+
+  /* Remember to switch the value of inEditMode back before re-rendering */
+  found.inEditMode = !found?.inEditMode;
 }
 
 function deleteOneElementFromBackend(id, icon, data) {
