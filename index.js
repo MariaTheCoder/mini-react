@@ -7,10 +7,8 @@ const deleteAllBtn = document.getElementById("delete_all_btn");
 const data = [{ text: "Hello " }, { text: "world!" }];
 
 /* Build a grid based on the content of the constant variable 'data' */
-if (data.length === 0) {
-  outputContainer.innerText = "Currently no data";
-}
-data.map((obj) => console.log(obj.text));
+
+render();
 
 /* Save the content of the text area and create a p element which contains this content once the Save button is clicked */
 saveBtn.addEventListener("click", () => {
@@ -25,6 +23,13 @@ saveBtn.addEventListener("click", () => {
 deleteAllBtn.addEventListener("click", () => {
   outputContainer.innerHTML = "";
 });
+
+function render() {
+  if (data.length === 0) {
+    outputContainer.innerText = "Currently no data";
+  }
+  data.map((obj) => createGridItem(obj?.text));
+}
 
 function addNewDataToBackend(textAreaContent) {
   const newDataElement = { id: data.length, text: "" };
