@@ -19,7 +19,7 @@ html {
 
 .output-container {
     display: grid;
-    grid-template-columns: calc(80vw - repeat(2, var(--default-margin))) repeat(2, auto);
+    grid-template-columns: calc(80vw - calc(2 * var(--default-margin))) repeat(2, auto);
 }
 
 .output-container > * {
