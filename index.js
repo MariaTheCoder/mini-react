@@ -10,16 +10,7 @@ const data = [];
 saveBtn.addEventListener("click", () => {
   const input = textArea.value;
 
-  const newOutputElement = document.createElement("p");
-  newOutputElement.innerText = input;
-
-  const newEditIcon = document.createElement("i");
-  newEditIcon.innerText = "edit";
-
-  const newDeleteIcon = document.createElement("i");
-  newDeleteIcon.innerText = "delete";
-
-  outputContainer.append(newOutputElement, newEditIcon, newDeleteIcon);
+  createGridItem(input);
 
   const newDataElement = { id: data.length, text: "" };
   newDataElement.text = input;
@@ -32,3 +23,16 @@ saveBtn.addEventListener("click", () => {
 deleteAllBtn.addEventListener("click", () => {
   outputContainer.innerHTML = "";
 });
+
+function createGridItem(textAreaContent) {
+  const newOutputElement = document.createElement("p");
+  newOutputElement.innerText = textAreaContent;
+
+  const newEditIcon = document.createElement("i");
+  newEditIcon.innerText = "edit";
+
+  const newDeleteIcon = document.createElement("i");
+  newDeleteIcon.innerText = "delete";
+
+  outputContainer.append(newOutputElement, newEditIcon, newDeleteIcon);
+}
