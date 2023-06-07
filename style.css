@@ -6,6 +6,11 @@
 
 .output-container {
     display: grid;
-    gap: 0.5rem 1rem;
     grid-template-columns: 80vw repeat(2, auto);
+}
+
+.output-container > * {
+    border: 1px solid #645353;
+    padding: 0.25em;
+    overflow: scroll;
 }
