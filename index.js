@@ -4,7 +4,13 @@ const outputContainer = document.getElementById("output_container");
 const deleteAllBtn = document.getElementById("delete_all_btn");
 
 /* data */
-const data = [];
+const data = [{ text: "Hello " }, { text: "world!" }];
+
+/* Build a grid based on the content of the constant variable 'data' */
+if (data.length === 0) {
+  outputContainer.innerText = "Currently no data";
+}
+data.map((obj) => console.log(obj.text));
 
 /* Save the content of the text area and create a p element which contains this content once the Save button is clicked */
 saveBtn.addEventListener("click", () => {
