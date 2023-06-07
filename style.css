@@ -5,11 +5,15 @@
 }
 
 :root {
+    --primary-color: rgb(255, 235, 235);
+    --secondary-color: rgb(173, 228, 219);
+
     --default-margin: 1em;
 }
 
 html {
     margin: var(--default-margin);
+    background-color: var(--primary-color);
 }
 
 .intro {
@@ -22,6 +26,13 @@ html {
     justify-content: center;
     align-items: center;
     gap: 1.5em;
+}
+
+.save-btn {
+    padding: 1em;
+    border: none;
+    border-radius: 15%;
+    background-color: var(--secondary-color);
 }
 
 .output-container {
