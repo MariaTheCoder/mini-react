@@ -6,8 +6,7 @@ const deleteAllBtn = document.getElementById("delete_all_btn");
 /* data */
 let data = [{ text: "Hello " }, { text: "world!" }];
 
-/* Build a grid based on the content of the constant variable 'data' */
-
+/* Build a grid based on the content of the constant variable 'data'. This render function should be called whenever changes are made to the data array above */
 render();
 
 /* Save the content of the text area and create a p element which contains this content once the Save button is clicked */
