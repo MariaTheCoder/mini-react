@@ -5,15 +5,17 @@
 }
 
 :root {
-    --primary-color: rgb(255, 235, 235);
-    --secondary-color: rgb(173, 228, 219);
+    --background-color: rgba(255, 235, 235, 1);
+    --primary-button: rgba(173, 228, 219, 1);
+    --secondary-button: rgba(109, 169, 228, 1);
+    --accent: rgba(246, 186, 111, 1);
 
     --default-margin: 1em;
 }
 
 html {
     margin: var(--default-margin);
-    background-color: var(--primary-color);
+    background-color: var(--background-color);
 }
 
 .intro {
@@ -32,7 +34,7 @@ html {
     padding: 1em;
     border: none;
     border-radius: 15%;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-button);
 }
 
 .output-container {
