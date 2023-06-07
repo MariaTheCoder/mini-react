@@ -53,45 +53,79 @@ function addNewDataToBackend(textAreaContent) {
 }
 
 function createGridItem(id, textAreaContent, inEditMode) {
-  let newOutputElement;
-
   if (inEditMode === true) {
-    newOutputElement = document.createElement("input");
+    const newOutputElement = document.createElement("input");
     newOutputElement.value = textAreaContent;
+    newOutputElement.setAttribute("element_id", id);
+
+    const saveEditIcon = document.createElement("i");
+    saveEditIcon.innerText = "save";
+    saveEditIcon.setAttribute("element_id", id);
+
+    /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
+    saveEditIcon.addEventListener("click", () => {
+      /* Get the current value of input field */
+      const currentInput = newOutputElement.value;
+
+      /* Find the data object with the same id as this icon and replace the value of property 'text' */
+      const elementId = Number(saveEditIcon.getAttribute("element_id"));
+      const found = data.find((e) => e?.id === elementId);
+      found.text = currentInput;
+
+      /* Remember to switch the value of inEditMode back before re-rendering */
+      found.inEditMode = !found?.inEditMode;
+
+      render();
+    });
+
+    const newDeleteIcon = document.createElement("i");
+    newDeleteIcon.innerText = "delete";
+    newDeleteIcon.setAttribute("element_id", id);
+
+    /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, delete it from the data array and call the render function */
+    newDeleteIcon.addEventListener("click", () => {
+      const elementId = Number(newEditIcon.getAttribute("element_id"));
+
+      const foundIndex = data.findIndex((e) => e?.id === elementId);
+      data.splice(foundIndex, 1);
+
+      render();
+    });
+
+    outputContainer.append(newOutputElement, saveEditIcon, newDeleteIcon);
   } else {
-    newOutputElement = document.createElement("p");
+    const newOutputElement = document.createElement("p");
     newOutputElement.innerText = textAreaContent;
+    newOutputElement.setAttribute("element_id", id);
+
+    const newEditIcon = document.createElement("i");
+    newEditIcon.innerText = "edit";
+    newEditIcon.setAttribute("element_id", id);
+
+    /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
+    newEditIcon.addEventListener("click", () => {
+      const elementId = Number(newEditIcon.getAttribute("element_id"));
+
+      const found = data.find((e) => e?.id === elementId);
+      found.inEditMode = !found?.inEditMode;
+
+      render();
+    });
+
+    const newDeleteIcon = document.createElement("i");
+    newDeleteIcon.innerText = "delete";
+    newDeleteIcon.setAttribute("element_id", id);
+
+    /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, delete it from the data array and call the render function */
+    newDeleteIcon.addEventListener("click", () => {
+      const elementId = Number(newEditIcon.getAttribute("element_id"));
+
+      const foundIndex = data.findIndex((e) => e?.id === elementId);
+      data.splice(foundIndex, 1);
+
+      render();
+    });
+
+    outputContainer.append(newOutputElement, newEditIcon, newDeleteIcon);
   }
-
-  newOutputElement.setAttribute("element_id", id);
-
-  const newEditIcon = document.createElement("i");
-  newEditIcon.innerText = "edit";
-  newEditIcon.setAttribute("element_id", id);
-
-  /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
-  newEditIcon.addEventListener("click", () => {
-    const elementId = Number(newEditIcon.getAttribute("element_id"));
-
-    const found = data.find((e) => e?.id === elementId);
-    found.inEditMode = !found?.inEditMode;
-
-    render();
-  });
-
-  const newDeleteIcon = document.createElement("i");
-  newDeleteIcon.innerText = "delete";
-  newDeleteIcon.setAttribute("element_id", id);
-
-  /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, delete it from the data array and call the render function */
-  newDeleteIcon.addEventListener("click", () => {
-    const elementId = Number(newEditIcon.getAttribute("element_id"));
-
-    const foundIndex = data.findIndex((e) => e?.id === elementId);
-    data.splice(foundIndex, 1);
-
-    render();
-  });
-
-  outputContainer.append(newOutputElement, newEditIcon, newDeleteIcon);
 }
