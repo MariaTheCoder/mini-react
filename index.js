@@ -40,7 +40,7 @@ function render() {
   if (data.length === 0) {
     outputContainer.innerText = "Currently no data";
   }
-  data.map((obj) => createGridItem(obj?.id, obj?.text));
+  data.map((obj) => createGridItem(obj?.id, obj?.text, obj?.inEditMode));
 }
 
 function addNewDataToBackend(textAreaContent) {
@@ -52,9 +52,17 @@ function addNewDataToBackend(textAreaContent) {
   console.log("new data element: ", newDataElement);
 }
 
-function createGridItem(id, textAreaContent) {
-  const newOutputElement = document.createElement("p");
-  newOutputElement.innerText = textAreaContent;
+function createGridItem(id, textAreaContent, inEditMode) {
+  let newOutputElement;
+
+  if (inEditMode === true) {
+    newOutputElement = document.createElement("input");
+    newOutputElement.value = textAreaContent;
+  } else {
+    newOutputElement = document.createElement("p");
+    newOutputElement.innerText = textAreaContent;
+  }
+
   newOutputElement.setAttribute("element_id", id);
 
   const newEditIcon = document.createElement("i");
@@ -68,7 +76,7 @@ function createGridItem(id, textAreaContent) {
     const found = data.find((e) => e?.id === elementId);
     found.inEditMode = !found?.inEditMode;
 
-    console.log("found: ", found);
+    render();
   });
 
   const newDeleteIcon = document.createElement("i");
