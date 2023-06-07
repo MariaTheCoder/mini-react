@@ -84,10 +84,7 @@ function createGridItem(id, textAreaContent, inEditMode) {
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
     editIcon.addEventListener("click", () => {
-      const elementId = Number(editIcon.getAttribute("element_id"));
-
-      const found = data.find((e) => e?.id === elementId);
-      found.inEditMode = !found?.inEditMode;
+      toggleEditMode(editIcon, "element_id", data);
 
       render();
     });
@@ -101,6 +98,13 @@ function createGridItem(id, textAreaContent, inEditMode) {
 
     outputContainer.append(textOutputElement, editIcon, deleteIcon);
   }
+}
+
+function toggleEditMode(icon, id_attribute_name, data) {
+  const elementId = Number(icon.getAttribute(id_attribute_name));
+
+  const found = data.find((e) => e?.id === elementId);
+  found.inEditMode = !found?.inEditMode;
 }
 
 function saveEditToBackend(textElement, icon, id_attribute_name) {
