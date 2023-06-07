@@ -75,5 +75,15 @@ function createGridItem(id, textAreaContent) {
   newDeleteIcon.innerText = "delete";
   newDeleteIcon.setAttribute("element_id", id);
 
+  /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, delete it from the data array and call the render function */
+  newDeleteIcon.addEventListener("click", () => {
+    const elementId = Number(newEditIcon.getAttribute("element_id"));
+
+    const foundIndex = data.findIndex((e) => e?.id === elementId);
+    data.splice(foundIndex, 1);
+
+    render();
+  });
+
   outputContainer.append(newOutputElement, newEditIcon, newDeleteIcon);
 }
