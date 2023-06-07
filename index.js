@@ -90,13 +90,9 @@ function createGridItem(id, textAreaContent, inEditMode) {
 
     outputContainer.append(newOutputElement, saveEditIcon, newDeleteIcon);
   } else {
-    const newOutputElement = document.createElement("p");
-    newOutputElement.innerText = textAreaContent;
-    newOutputElement.setAttribute("element_id", id);
-
-    const newEditIcon = document.createElement("i");
-    newEditIcon.innerText = "edit";
-    newEditIcon.setAttribute("element_id", id);
+    const newOutputElement = createHTMLElement("p", textAreaContent, id);
+    const newEditIcon = createHTMLElement("i", "edit", id);
+    const newDeleteIcon = createHTMLElement("i", "delete", id);
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
     newEditIcon.addEventListener("click", () => {
@@ -107,10 +103,6 @@ function createGridItem(id, textAreaContent, inEditMode) {
 
       render();
     });
-
-    const newDeleteIcon = document.createElement("i");
-    newDeleteIcon.innerText = "delete";
-    newDeleteIcon.setAttribute("element_id", id);
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, delete it from the data array and call the render function */
     newDeleteIcon.addEventListener("click", () => {
