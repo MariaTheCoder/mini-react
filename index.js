@@ -12,17 +12,23 @@ saveBtn.addEventListener("click", () => {
 
   createGridItem(input);
 
-  const newDataElement = { id: data.length, text: "" };
-  newDataElement.text = input;
-  data.push(newDataElement);
-  console.log("new data element: ", newDataElement);
-  console.log("data: ", data);
+  addNewDataToBackend(input);
 });
 
 /* Delete all content of the output container when the Delete All button is clicked */
 deleteAllBtn.addEventListener("click", () => {
   outputContainer.innerHTML = "";
 });
+
+function addNewDataToBackend(textAreaContent) {
+  const newDataElement = { id: data.length, text: "" };
+
+  newDataElement.text = textAreaContent;
+  data.push(newDataElement);
+
+  console.log("new data element: ", newDataElement);
+  console.log("data: ", data);
+}
 
 function createGridItem(textAreaContent) {
   const newOutputElement = document.createElement("p");
