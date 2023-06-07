@@ -58,17 +58,17 @@ function addNewDataToBackend(textAreaContent) {
 
 function createGridItem(id, textAreaContent, inEditMode) {
   if (inEditMode === true) {
-    const newOutputElement = createHTMLElement("input", textAreaContent, id);
-    const saveEditIcon = createHTMLElement("i", "save", id);
-    const newDeleteIcon = createHTMLElement("i", "delete", id);
+    const textOutputElement = createHTMLElement("input", textAreaContent, id);
+    const saveIcon = createHTMLElement("i", "save", id);
+    const deleteIcon = createHTMLElement("i", "delete", id);
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
-    saveEditIcon.addEventListener("click", () => {
+    saveIcon.addEventListener("click", () => {
       /* Get the current value of input field */
-      const currentInput = newOutputElement.value;
+      const currentInput = textOutputElement.value;
 
       /* Find the data object with the same id as this icon and replace the value of property 'text' */
-      const elementId = Number(saveEditIcon.getAttribute("element_id"));
+      const elementId = Number(saveIcon.getAttribute("element_id"));
       const found = data.find((e) => e?.id === elementId);
       found.text = currentInput;
 
@@ -79,8 +79,8 @@ function createGridItem(id, textAreaContent, inEditMode) {
     });
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, delete it from the data array and call the render function */
-    newDeleteIcon.addEventListener("click", () => {
-      const elementId = Number(newEditIcon.getAttribute("element_id"));
+    deleteIcon.addEventListener("click", () => {
+      const elementId = Number(editIcon.getAttribute("element_id"));
 
       const foundIndex = data.findIndex((e) => e?.id === elementId);
       data.splice(foundIndex, 1);
@@ -88,15 +88,15 @@ function createGridItem(id, textAreaContent, inEditMode) {
       render();
     });
 
-    outputContainer.append(newOutputElement, saveEditIcon, newDeleteIcon);
+    outputContainer.append(textOutputElement, saveIcon, deleteIcon);
   } else {
-    const newOutputElement = createHTMLElement("p", textAreaContent, id);
-    const newEditIcon = createHTMLElement("i", "edit", id);
-    const newDeleteIcon = createHTMLElement("i", "delete", id);
+    const textOutputElement = createHTMLElement("p", textAreaContent, id);
+    const editIcon = createHTMLElement("i", "edit", id);
+    const deleteIcon = createHTMLElement("i", "delete", id);
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
-    newEditIcon.addEventListener("click", () => {
-      const elementId = Number(newEditIcon.getAttribute("element_id"));
+    editIcon.addEventListener("click", () => {
+      const elementId = Number(editIcon.getAttribute("element_id"));
 
       const found = data.find((e) => e?.id === elementId);
       found.inEditMode = !found?.inEditMode;
@@ -105,8 +105,8 @@ function createGridItem(id, textAreaContent, inEditMode) {
     });
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, delete it from the data array and call the render function */
-    newDeleteIcon.addEventListener("click", () => {
-      const elementId = Number(newEditIcon.getAttribute("element_id"));
+    deleteIcon.addEventListener("click", () => {
+      const elementId = Number(editIcon.getAttribute("element_id"));
 
       const foundIndex = data.findIndex((e) => e?.id === elementId);
       data.splice(foundIndex, 1);
@@ -114,7 +114,7 @@ function createGridItem(id, textAreaContent, inEditMode) {
       render();
     });
 
-    outputContainer.append(newOutputElement, newEditIcon, newDeleteIcon);
+    outputContainer.append(textOutputElement, editIcon, deleteIcon);
   }
 }
 
