@@ -30,10 +30,13 @@ html {
     gap: 1.5em;
 }
 
-.save-btn {
+.buttons {
     padding: 1em;
     border: none;
     border-radius: 15%;
+}
+
+.save-btn {
     background-color: var(--color-primary-button);
 }
 
