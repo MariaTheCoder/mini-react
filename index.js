@@ -58,13 +58,9 @@ function addNewDataToBackend(textAreaContent) {
 
 function createGridItem(id, textAreaContent, inEditMode) {
   if (inEditMode === true) {
-    const newOutputElement = document.createElement("input");
-    newOutputElement.value = textAreaContent;
-    newOutputElement.setAttribute("element_id", id);
-
-    const saveEditIcon = document.createElement("i");
-    saveEditIcon.innerText = "save";
-    saveEditIcon.setAttribute("element_id", id);
+    const newOutputElement = createHTMLElement("input", textAreaContent, id);
+    const saveEditIcon = createHTMLElement("i", "save", id);
+    const newDeleteIcon = createHTMLElement("i", "delete", id);
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
     saveEditIcon.addEventListener("click", () => {
@@ -81,10 +77,6 @@ function createGridItem(id, textAreaContent, inEditMode) {
 
       render();
     });
-
-    const newDeleteIcon = document.createElement("i");
-    newDeleteIcon.innerText = "delete";
-    newDeleteIcon.setAttribute("element_id", id);
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, delete it from the data array and call the render function */
     newDeleteIcon.addEventListener("click", () => {
@@ -132,4 +124,18 @@ function createGridItem(id, textAreaContent, inEditMode) {
 
     outputContainer.append(newOutputElement, newEditIcon, newDeleteIcon);
   }
+}
+
+function createHTMLElement(tag, value, id) {
+  const HTMLElement = document.createElement(tag);
+
+  if (tag === "input") {
+    HTMLElement.value = value;
+  } else {
+    HTMLElement.innerText = value;
+  }
+
+  HTMLElement.setAttribute("element_id", id);
+
+  return HTMLElement;
 }
