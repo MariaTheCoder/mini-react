@@ -5,8 +5,8 @@ const deleteAllBtn = document.getElementById("delete_all_btn");
 
 /* data */
 let data = [
-  { id: 0, text: "Hello " },
-  { id: 1, text: "world!" },
+  { id: 0, text: "Hello ", inEditMode: false },
+  { id: 1, text: "world!", inEditMode: false },
 ];
 
 /* Build a grid based on the content of the constant variable 'data'. This render function should be called whenever changes are made to the data array above */
@@ -44,7 +44,7 @@ function render() {
 }
 
 function addNewDataToBackend(textAreaContent) {
-  const newDataElement = { id: data.length, text: "" };
+  const newDataElement = { id: data.length, text: "", inEditMode: false };
 
   newDataElement.text = textAreaContent;
   data.push(newDataElement);
@@ -60,6 +60,16 @@ function createGridItem(id, textAreaContent) {
   const newEditIcon = document.createElement("i");
   newEditIcon.innerText = "edit";
   newEditIcon.setAttribute("element_id", id);
+
+  /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
+  newEditIcon.addEventListener("click", () => {
+    const elementId = Number(newEditIcon.getAttribute("element_id"));
+
+    const found = data.find((e) => e?.id === elementId);
+    found.inEditMode = !found?.inEditMode;
+
+    console.log("found: ", found);
+  });
 
   const newDeleteIcon = document.createElement("i");
   newDeleteIcon.innerText = "delete";
