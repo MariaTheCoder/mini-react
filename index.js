@@ -4,7 +4,10 @@ const outputContainer = document.getElementById("output_container");
 const deleteAllBtn = document.getElementById("delete_all_btn");
 
 /* data */
-let data = [{ text: "Hello " }, { text: "world!" }];
+let data = [
+  { id: 0, text: "Hello " },
+  { id: 1, text: "world!" },
+];
 
 /* Build a grid based on the content of the constant variable 'data'. This render function should be called whenever changes are made to the data array above */
 render();
@@ -37,7 +40,7 @@ function render() {
   if (data.length === 0) {
     outputContainer.innerText = "Currently no data";
   }
-  data.map((obj) => createGridItem(obj?.text));
+  data.map((obj) => createGridItem(obj?.id, obj?.text));
 }
 
 function addNewDataToBackend(textAreaContent) {
@@ -49,15 +52,18 @@ function addNewDataToBackend(textAreaContent) {
   console.log("new data element: ", newDataElement);
 }
 
-function createGridItem(textAreaContent) {
+function createGridItem(id, textAreaContent) {
   const newOutputElement = document.createElement("p");
   newOutputElement.innerText = textAreaContent;
+  newOutputElement.setAttribute("element_id", id);
 
   const newEditIcon = document.createElement("i");
   newEditIcon.innerText = "edit";
+  newEditIcon.setAttribute("element_id", id);
 
   const newDeleteIcon = document.createElement("i");
   newDeleteIcon.innerText = "delete";
+  newDeleteIcon.setAttribute("element_id", id);
 
   outputContainer.append(newOutputElement, newEditIcon, newDeleteIcon);
 }
