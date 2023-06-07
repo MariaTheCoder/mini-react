@@ -33,11 +33,15 @@ html {
 .buttons {
     padding: 1em;
     border: none;
-    border-radius: 15%;
+    border-radius: 0.75em;
 }
 
 .save-btn {
     background-color: var(--color-primary-button);
+}
+
+.delete-btn {
+    background-color: var(--color-secondary-button);
 }
 
 .output-container {
