@@ -44,7 +44,11 @@ function render() {
 }
 
 function addNewDataToBackend(textAreaContent) {
-  const newDataElement = { id: data.length, text: "", inEditMode: false };
+  const newDataElement = {
+    id: data[data.length - 1].id + 1,
+    text: "",
+    inEditMode: false,
+  };
 
   newDataElement.text = textAreaContent;
   data.push(newDataElement);
