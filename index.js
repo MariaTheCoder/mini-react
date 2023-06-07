@@ -29,6 +29,8 @@ function render() {
   /* Start by deleteing all current content of the output container */
   outputContainer.innerHTML = "";
 
+  console.log("data: ", data);
+
   /* Look into the data array and do the following: 
       If the array is empty, then display a message inside of the output container explaining so 
       If the array is not empy, run createGridItem on each object's value of the text property */
@@ -45,7 +47,6 @@ function addNewDataToBackend(textAreaContent) {
   data.push(newDataElement);
 
   console.log("new data element: ", newDataElement);
-  console.log("data: ", data);
 }
 
 function createGridItem(textAreaContent) {
