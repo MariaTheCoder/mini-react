@@ -15,6 +15,7 @@ render();
 /* Save the content of the text area and create a p element which contains this content once the Save button is clicked */
 saveBtn.addEventListener("click", () => {
   const input = textArea.value;
+  textArea.value = "";
 
   addNewDataToBackend(input);
 
