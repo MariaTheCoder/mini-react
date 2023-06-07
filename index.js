@@ -14,9 +14,9 @@ render();
 saveBtn.addEventListener("click", () => {
   const input = textArea.value;
 
-  createGridItem(input);
-
   addNewDataToBackend(input);
+
+  render();
 });
 
 /* Delete all content of the output container when the Delete All button is clicked */
