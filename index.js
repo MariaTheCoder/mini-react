@@ -4,7 +4,7 @@ const outputContainer = document.getElementById("output_container");
 const deleteAllBtn = document.getElementById("delete_all_btn");
 
 /* data */
-const data = [{ text: "Hello " }, { text: "world!" }];
+let data = [{ text: "Hello " }, { text: "world!" }];
 
 /* Build a grid based on the content of the constant variable 'data' */
 
@@ -21,7 +21,9 @@ saveBtn.addEventListener("click", () => {
 
 /* Delete all content of the output container when the Delete All button is clicked */
 deleteAllBtn.addEventListener("click", () => {
-  outputContainer.innerHTML = "";
+  data = [];
+
+  render();
 });
 
 function render() {
