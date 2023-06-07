@@ -47,3 +47,7 @@ html {
     padding: 0.25em;
     overflow: scroll;
 }
+
+i {
+    font-style: normal;
+}
