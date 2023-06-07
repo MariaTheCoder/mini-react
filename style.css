@@ -5,17 +5,17 @@
 }
 
 :root {
-    --background-color: rgba(255, 235, 235, 1);
-    --primary-button: rgba(173, 228, 219, 1);
-    --secondary-button: rgba(109, 169, 228, 1);
-    --accent: rgba(246, 186, 111, 1);
+    --color-background: rgba(255, 235, 235, 1);
+    --color-primary-button: rgba(173, 228, 219, 1);
+    --color-secondary-button: rgba(109, 169, 228, 1);
+    --color-accent: rgba(246, 186, 111, 1);
 
     --default-margin: 1em;
 }
 
 html {
     margin: var(--default-margin);
-    background-color: var(--background-color);
+    background-color: var(--color-background);
 }
 
 .intro {
@@ -34,7 +34,7 @@ html {
     padding: 1em;
     border: none;
     border-radius: 15%;
-    background-color: var(--primary-button);
+    background-color: var(--color-primary-button);
 }
 
 .output-container {
