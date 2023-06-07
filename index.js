@@ -60,8 +60,8 @@ function addNewDataToBackend(textAreaContent) {
 function createGridItem(id, textAreaContent, inEditMode) {
   if (inEditMode === true) {
     const textOutputElement = createHTMLElement("input", textAreaContent, id);
-    const saveIcon = createHTMLElement("i", "save", id);
-    const deleteIcon = createHTMLElement("i", "delete", id);
+    const saveIcon = createHTMLElement("i", "💾", id);
+    const deleteIcon = createHTMLElement("i", "❌", id);
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
     saveIcon.addEventListener("click", () => {
@@ -80,8 +80,8 @@ function createGridItem(id, textAreaContent, inEditMode) {
     outputContainer.append(textOutputElement, saveIcon, deleteIcon);
   } else {
     const textOutputElement = createHTMLElement("p", textAreaContent, id);
-    const editIcon = createHTMLElement("i", "edit", id);
-    const deleteIcon = createHTMLElement("i", "delete", id);
+    const editIcon = createHTMLElement("i", "✏️", id);
+    const deleteIcon = createHTMLElement("i", "❌", id);
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, alternate the proerty of inEditMode */
     editIcon.addEventListener("click", () => {
