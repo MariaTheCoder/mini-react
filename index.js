@@ -9,7 +9,14 @@ saveBtn.addEventListener("click", () => {
 
   const newOutputElement = document.createElement("p");
   newOutputElement.innerText = input;
-  outputContainer.appendChild(newOutputElement);
+
+  const newEditIcon = document.createElement("i");
+  newEditIcon.innerText = "edit";
+
+  const newDeleteIcon = document.createElement("i");
+  newDeleteIcon.innerText = "delete";
+
+  outputContainer.append(newOutputElement, newEditIcon, newDeleteIcon);
 });
 
 /* Delete all content of the output container when the Delete All button is clicked */
