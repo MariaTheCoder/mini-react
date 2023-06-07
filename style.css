@@ -4,6 +4,14 @@
     padding: 0;
 }
 
+:root {
+    --default-margin: 1em;
+}
+
+html {
+    margin: var(--default-margin);
+}
+
 .intro {
     width: 75ch;
     padding: 1rem 0;
@@ -11,7 +19,7 @@
 
 .output-container {
     display: grid;
-    grid-template-columns: 80vw repeat(2, auto);
+    grid-template-columns: calc(80vw - repeat(2, var(--default-margin))) repeat(2, auto);
 }
 
 .output-container > * {
