@@ -80,10 +80,7 @@ function createGridItem(id, textAreaContent, inEditMode) {
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, delete it from the data array and call the render function */
     deleteIcon.addEventListener("click", () => {
-      const elementId = Number(editIcon.getAttribute("element_id"));
-
-      const foundIndex = data.findIndex((e) => e?.id === elementId);
-      data.splice(foundIndex, 1);
+      deleteOneElementFromBackend("element_id", editIcon, data);
 
       render();
     });
@@ -106,16 +103,20 @@ function createGridItem(id, textAreaContent, inEditMode) {
 
     /* Add an event listeniner to the icon. When icon is clicked, get the element id from the html element and store it as a number. Then look for the object inside of the data array which has the same id number. When that object is found, delete it from the data array and call the render function */
     deleteIcon.addEventListener("click", () => {
-      const elementId = Number(editIcon.getAttribute("element_id"));
-
-      const foundIndex = data.findIndex((e) => e?.id === elementId);
-      data.splice(foundIndex, 1);
+      deleteOneElementFromBackend("element_id", editIcon, data);
 
       render();
     });
 
     outputContainer.append(textOutputElement, editIcon, deleteIcon);
   }
+}
+
+function deleteOneElementFromBackend(id, icon, data) {
+  const elementId = Number(icon.getAttribute(id));
+
+  const foundIndex = data.findIndex((e) => e?.id === elementId);
+  data.splice(foundIndex, 1);
 }
 
 function createHTMLElement(tag, value, id) {
