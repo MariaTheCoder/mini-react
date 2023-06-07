@@ -7,5 +7,5 @@
 .output-container {
     display: grid;
     gap: 0.5rem 1rem;
-    grid-template-columns: 80rem repeat(2, auto);
+    grid-template-columns: 80vw repeat(2, auto);
 }
