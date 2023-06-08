@@ -20,7 +20,7 @@ html {
 
 .intro {
     width: 75ch;
-    padding: 1rem 0;
+    margin-top: var(--default-margin);
 }
 
 .button-textarea-container {
