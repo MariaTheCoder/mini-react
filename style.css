@@ -14,8 +14,11 @@
 }
 
 html {
-    margin: var(--default-margin);
+    height: 100vh;
+    padding: var(--default-margin);
     background-color: var(--color-background);
+
+    position: relative;
 }
 
 .intro {
@@ -32,7 +35,7 @@ html {
 }
 
 .buttons {
-    padding: 1em;
+    padding: var(--default-margin);
     border: none;
     border-radius: 0.75em;
 }
@@ -43,6 +46,10 @@ html {
 
 .delete-btn {
     background-color: var(--color-secondary-button);
+
+    position: absolute;
+    bottom: var(--default-margin);
+    right: var(--default-margin)
 }
 
 .output-container {
