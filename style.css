@@ -14,11 +14,9 @@
 }
 
 html {
-    height: 100vh;
+    min-height: 100vh;
     padding: var(--default-margin);
     background-color: var(--color-background);
-
-    position: relative;
 }
 
 .intro {
@@ -26,12 +24,19 @@ html {
     margin-top: var(--default-margin);
 }
 
+.button-textarea-container, .delete-btn-flex-container {
+    display: flex;
+}
+
 .button-textarea-container {
     margin: 2em 0;
-    display: flex;
     justify-content: center;
     align-items: center;
     gap: 1.5em;
+}
+
+.delete-btn-flex-container {
+    justify-content: end;
 }
 
 .buttons {
@@ -45,11 +50,8 @@ html {
 }
 
 .delete-btn {
+    margin-top: var(--default-margin);
     background-color: var(--color-secondary-button);
-
-    position: absolute;
-    bottom: var(--default-margin);
-    right: var(--default-margin)
 }
 
 .output-container {
