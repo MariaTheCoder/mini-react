@@ -49,11 +49,13 @@ function render() {
 }
 
 function addNewDataToBackend(textAreaContent) {
-  const newDataElement = {
-    id: data[data.length - 1].id + 1,
-    text: "",
-    inEditMode: false,
-  };
+  const newDataElement = { text: "", inEditMode: false };
+
+  if (data.length === 0) {
+    newDataElement.id = 0;
+  } else {
+    newDataElement.id = data[data.length - 1].id + 1;
+  }
 
   newDataElement.text = textAreaContent;
   data.push(newDataElement);
