@@ -1,4 +1,4 @@
-import { test } from "./test.js";
+import { test } from "./modules/test.js";
 
 const textArea = document.getElementById("text_area");
 const saveBtn = document.getElementById("save_btn");
