@@ -24,11 +24,11 @@ html {
     margin-top: var(--default-margin);
 }
 
-.button-textarea-container, .delete-btn-flex-container {
+.button-textarea-flex-container, .delete-btn-flex-container {
     display: flex;
 }
 
-.button-textarea-container {
+.button-textarea-flex-container {
     margin: 2em 0;
     justify-content: center;
     align-items: center;
