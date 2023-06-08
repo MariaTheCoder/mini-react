@@ -59,3 +59,10 @@ html {
 i {
     font-style: normal;
 }
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 620px) {
+    .intro {
+        max-width: fit-content;
+    }
+  }
